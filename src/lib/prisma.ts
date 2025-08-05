@@ -1,0 +1,17 @@
+/* ============================================
+ * FILE: src/lib/prisma.ts
+ * PURPOSE: Prisma client configuration with connection pooling
+ * LAST MODIFIED: August 2025
+ * ============================================ */
+
+import { PrismaClient } from '@prisma/client';
+
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
+
+export const prisma = globalForPrisma.prisma ?? new PrismaClient({
+  log: process.env.NODE_ENV === 'development' ? ['query'] : [],
+});
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
