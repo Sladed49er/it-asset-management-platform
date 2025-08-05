@@ -12,7 +12,7 @@ import { UserRole } from '@prisma/client';
 import { prisma } from './prisma';
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any, // Type assertion to fix compatibility
+  adapter: PrismaAdapter(prisma) as any, // eslint-disable-line @typescript-eslint/no-explicit-any
   session: {
     strategy: 'jwt',
   },
@@ -133,7 +133,7 @@ export const authOptions: NextAuthOptions = {
     async signIn({ user }) {
       console.log(`User ${user.email} signed in`);
     },
-    async signOut({ session }) {
+    async signOut() {
       console.log(`User signed out`);
     },
   },

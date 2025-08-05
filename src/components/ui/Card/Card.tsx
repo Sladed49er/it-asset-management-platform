@@ -28,7 +28,9 @@ export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement>
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
-export interface CardSubtitleProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export interface CardSubtitleProps extends React.HTMLAttributes<HTMLParagraphElement> {
+  variant?: string; // Add this line
+}
 
 // Main Card Component
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
